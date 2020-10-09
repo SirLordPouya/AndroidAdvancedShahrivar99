@@ -3,6 +3,7 @@ package com.sematec.android.advanced.shahrivar99
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivityKotlin : AppCompatActivity() {
 
@@ -15,7 +16,7 @@ class MainActivityKotlin : AppCompatActivity() {
 
     // int age = 30;
     var age = 30 // Int
-    val age1: Int = 30 // Int
+    val age1: Int = 3065165 // Int
     val height = 33.3 // Double
     var isMale: Boolean = false
     var name = "Pouya"
@@ -28,6 +29,41 @@ class MainActivityKotlin : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        printData("Pouya", "Heydari", 30, true, "")
+        printData("Pouya", "Heydari", 30, true, "")
+        printData("Pouya", "Heydari", 30, true, "")
+        printData("Pouya", "Heydari", 30, true, "")
+        printData("Pouya", "Heydari", 30, true, "")
+        printData("Pouya", "Heydari", 30, true, "")
+        printData("Pouya", "Heydari", 30, true, "")
+        printData("Pouya", "Heydari", 30, true, "")
+        printData("Pouya", "Heydari", 30, true, "")
+        printData("Pouya", "Heydari", 30, true, "")
+        printData("Pouya", "Heydari", 30, true, "")
+        printData("Pouya", "Heydari", 30, true, "")
+        printData("Pouya", "Heydari")
+        printData(age = 30, name = "Pouya", isMale = true, family = "Heydari", fatherName = "")
+        printData("Pouya", "Heydari", 35, false, "")
+
+
+        // lambda || high order functions
+        val lambdaFunction: (Int) -> Int = { age -> 2020 - age }
+
+        val userAge = lambdaFunction(1980)
+
+        val userAge2 = calculateAgeByShamsiYear(1365, lambdaFunction)
+
+
+        val concatMessage: (String, String, Boolean) -> String = { name, family, isMale ->
+            if (isMale) "Mr. $name $family" else "Ms. $name $family"
+        }
+
+        salute("Pouya", "Heydari", true, concatMessage)
+
+        txtHello.text = age1.toPersianNumber()
+
 
 //        age1 = 20
         age = 40
@@ -159,7 +195,7 @@ class MainActivityKotlin : AppCompatActivity() {
         val name = "Pouya"
         val isOAvailable = name.contains("o")
         val isPAvailable = 'P' !in name
-        val range = 0..20
+        val range: IntRange = 0..20
         val check = 55 in range
 
         checkInstance(20)
@@ -167,7 +203,7 @@ class MainActivityKotlin : AppCompatActivity() {
         checkInstance(false)
     }
 
-    fun checkInstance(member: Any) = when (member){
+    fun checkInstance(member: Any) = when (member) {
         is String -> print(member.toUpperCase())
         is Int -> print(member + 100)
         is Boolean -> print(!member)
@@ -175,8 +211,52 @@ class MainActivityKotlin : AppCompatActivity() {
 
     }
 
+    fun printData(name: String, family: String, age: Int = 30, isMale: Boolean = true, fatherName: String = "") {
+        print(name + family + age + isMale + fatherName)
+    }
 
-    fun testInteroperable(){
+
+    fun testInteroperable() {
         val mainActivity = MainActivity()
     }
+
+    // Extension Function
+//    fun toPersianNumber(number: Int): String {
+//
+//    }
+
+    fun Int.toPersianNumber(): String {
+        val originalNumber = this.toString()
+        var newNumber = originalNumber.replace("1", "۱")
+        newNumber = newNumber.replace("2", "۲")
+        newNumber = newNumber.replace("3", "۳")
+        newNumber = newNumber.replace("4", "۴")
+        newNumber = newNumber.replace("5", "۵")
+        newNumber = newNumber.replace("6", "۶")
+        newNumber = newNumber.replace("7", "۷")
+        newNumber = newNumber.replace("8", "۸")
+        newNumber = newNumber.replace("9", "۹")
+        newNumber = newNumber.replace("0", "۰")
+        return newNumber
+    }
+
+
+    /**
+     * High Order Function
+     *
+     * @param shamsi
+     * @param calculateAge
+     * @return
+     */
+    fun calculateAgeByShamsiYear(shamsi: Int, calculateAge: (Int) -> Int): Int {
+        // turn shamsi to gregorian date
+
+        return calculateAge(shamsi)
+    }
+
+    fun salute(name: String, family: String, isMale: Boolean, concatMessage: (String, String, Boolean) -> String): String {
+        return concatMessage(name, family, isMale)
+    }
+
+
 }

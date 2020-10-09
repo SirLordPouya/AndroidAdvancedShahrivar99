@@ -28,19 +28,19 @@ class TestKotlinInAndroidActivity : AppCompatActivity() {
             }
         })
 
-        btnOk.setOnClickListener(object : View.OnClickListener{
+        btnOk.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                Toast.makeText(this@TestKotlinInAndroidActivity,"",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@TestKotlinInAndroidActivity, "", Toast.LENGTH_LONG).show()
             }
         })
 
-        Handler().postDelayed(object : Runnable{
+        Handler().postDelayed(object : Runnable {
             override fun run() {
                 //
                 //
                 //
             }
-        },500)
+        }, 500)
 
     }
 }
