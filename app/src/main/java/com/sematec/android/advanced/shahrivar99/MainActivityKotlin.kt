@@ -53,7 +53,7 @@ class MainActivityKotlin : AppCompatActivity() {
 
         val userAge = lambdaFunction(1980)
 
-        val userAge2 = calculateAgeByShamsiYear(1365, lambdaFunction)
+        val userAge2 = calculateAgeByShamsiYear { 2020 - it }
 
 
         val concatMessage: (String, String, Boolean) -> String = { name, family, isMale ->
@@ -248,10 +248,10 @@ class MainActivityKotlin : AppCompatActivity() {
      * @param calculateAge
      * @return
      */
-    fun calculateAgeByShamsiYear(shamsi: Int, calculateAge: (Int) -> Int): Int {
+    fun calculateAgeByShamsiYear(calculateAge: (Int) -> Int): Int {
         // turn shamsi to gregorian date
 
-        return calculateAge(shamsi)
+        return calculateAge(1980)
     }
 
     fun salute(name: String, family: String, isMale: Boolean, concatMessage: (String, String, Boolean) -> String): String {

@@ -21,25 +21,24 @@ class TestKotlinInAndroidActivity : AppCompatActivity() {
 
 
         //anonymous class/object
-        btnOk.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                //
-                //
-            }
-        })
+        btnOk.setOnClickListener {
+            Toast.makeText(this, "asd", Toast.LENGTH_SHORT).show()
+        }
 
-        btnOk.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                Toast.makeText(this@TestKotlinInAndroidActivity, "", Toast.LENGTH_LONG).show()
-            }
-        })
 
-        Handler().postDelayed(object : Runnable {
-            override fun run() {
-                //
-                //
-                //
-            }
+        // 1.4
+        btnOk.setOnFocusChangeListener{ _, _ ->
+
+        }
+
+
+        //SAM Interface ======> Lambda
+        btnOk.setOnClickListener {
+            Toast.makeText(this@TestKotlinInAndroidActivity, "", Toast.LENGTH_LONG).show()
+        }
+
+        Handler().postDelayed({
+
         }, 500)
 
     }
