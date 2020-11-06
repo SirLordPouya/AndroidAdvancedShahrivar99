@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TestDIActivity"></activity>
+        <activity android:name=".mvvm.TestMVVMActivity"></activity>
+        <activity android:name=".TestDIActivity" />
         <activity android:name=".TestPersonActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
