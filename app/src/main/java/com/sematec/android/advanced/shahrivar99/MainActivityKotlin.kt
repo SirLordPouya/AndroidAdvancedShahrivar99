@@ -259,4 +259,8 @@ class MainActivityKotlin : AppCompatActivity() {
     }
 
 
+    fun testDestruct() {
+        val pair = "Name" to "Pouya"
+        val (key,value) = pair
+    }
 }
