@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sematec.android.advanced.shahrivar99">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
@@ -10,17 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".navigation.TestNavigationActivity">
+        <activity android:name=".TestRetrofitActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".navigation.TestNavigationActivity">
+        </activity>
         <activity android:name=".mvvm.TestMVVMActivity" />
         <activity android:name=".TestDIActivity" />
-        <activity android:name=".TestPersonActivity">
-        </activity>
+        <activity android:name=".TestPersonActivity"></activity>
         <activity android:name=".TestKotlinInAndroidActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MainActivityKotlin" />
